@@ -25,16 +25,17 @@ async function main() {
 
   const message3: IMessage = {
     rid: roomId,
-    msg: "this the test demo message recheck 1",
+    // msg: "this the test demo message recheck 2",
     attachments: [
       {
-        title: "dash",
-        title_link: "https://codesandbox.io",
+        author_name: "dash",
+        author_link: "https://source.unsplash.com/random",
+        author_icon: "https://source.unsplash.com/random",
+        // title_link: "https://codesandbox.io",
+        // title: "codesanbox",
         text:
-          "**we are going to check if this** message is parsed into _markdown_",
+          "**we are going to check if this** message is parsed into _markdown_. Making sure this **message is long enough** to check that the `message` is *_not_* `wrapped`.",
         color: "red",
-        image_url:
-          "https://images.unsplash.com/photo-1610431301122-1f9a9e3b7769?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
       },
     ],
   };
