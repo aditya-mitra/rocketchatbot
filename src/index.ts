@@ -1,6 +1,9 @@
 import { config as dotenvConfig } from "dotenv";
-import { driver, api } from "@rocket.chat/sdk";
-import { IMessage } from "@rocket.chat/sdk/dist/config/messageInterfaces";
+import { driver } from "@rocket.chat/sdk";
+import {
+  IAttachmentField,
+  IMessage,
+} from "@rocket.chat/sdk/dist/config/messageInterfaces";
 
 dotenvConfig();
 
@@ -12,6 +15,24 @@ const {
 
 const message1: string = "this is fast hello";
 const message2: string = "another hello from faster" + Date.now();
+/**
+ * message is markdown
+ */
+const message3:string = "**we are going to check if this** message is parsed into _markdown_. Making sure this **message is long enough** to check that the `message` is *_not_* `wrapped`."
+const message4:string = "checking if the margin/padding is right"
+
+const messageAttachmentFields: IAttachmentField[] = [
+  {
+    short: true,
+    title: "field 1",
+    value: "should have used some lorem ipsum",
+  },
+  {
+    short: true,
+    title: "field 2",
+    value: "**checking** ~for~ _markdown_",
+  },
+];
 
 async function main() {
   await driver.connect({ host: ROCKETCHAT_URL, useSsl: false });
@@ -34,8 +55,9 @@ async function main() {
         // title_link: "https://codesandbox.io",
         // title: "codesanbox",
         text:
-          "**we are going to check if this** message is parsed into _markdown_. Making sure this **message is long enough** to check that the `message` is *_not_* `wrapped`.",
+          "",
         color: "red",
+        fields: messageAttachmentFields,
       },
     ],
   };
